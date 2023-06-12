@@ -5,12 +5,13 @@ metadata:
 spec:
   selector:
     app: "phpserver"
-  type: ClusterIP
+  type: NodePort
   ports:
     - name: phpserver-service #optional
       port: 8005 #Porta do Serviço rodando no kubernetes
       targetPort: 80 #porta do container, quando é omitido o kubernetes assume que é a mesma porta do serviço
       protocol: TCP
+      nodePort: 30001 #Se nao passar nada, será gerado uma porta automatica
 
 # port forward
 # kubectl port-forward svc/phpserver-service <local_port>:<service_port>
@@ -19,3 +20,9 @@ spec:
 #     Ao acessar a porta local (8003)
 #         é redirecionado para a porta do serviço (8005)
 #         que redireciona para a porta do container (80)
+
+# NodePort (muito raro ser usado, porque geralmente tem serviços mais adequados)
+#   Gera uma porta entre 30000 e 32767
+#   Libera essa porta em todos os nodes
+#   Permite o acesso ao serviço usando <ip_da_maquina>:<node_port> 
+#   Somente acessivel dentro da rede do cluster
