@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "phpserver-service"
+spec:
+  selector:
+    app: "phpserver"
+  type: ClusterIP
+  ports:
+    - name: phpserver-service #optional
+      port: 8005
+      protocol: TCP
+
+# port forward
+# kubectl port-forward svc/phpserver-service 8005:8005
