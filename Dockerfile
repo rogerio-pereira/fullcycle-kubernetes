@@ -4,9 +4,9 @@ WORKDIR /var/www/html
 
 COPY . /var/www/html
 
-EXPOSE 8005
+EXPOSE 80
 
-CMD ["php", "-S", "0.0.0.0:8005"]
+CMD ["php", "-S", "0.0.0.0:80"]
 
 # build
 # docker build -t farofapereira/kubernetes-hello-php .

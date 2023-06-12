@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: "phpserver"
-        image: "farofapereira/kubernetes-hello-php:v2"
+        image: "farofapereira/kubernetes-hello-php:v3"
 
 # para aplicar configurações
 # kubectl apply -f k8s/deployment.yml

@@ -8,8 +8,14 @@ spec:
   type: ClusterIP
   ports:
     - name: phpserver-service #optional
-      port: 8005
+      port: 8005 #Porta do Serviço rodando no kubernetes
+      targetPort: 80 #porta do container, quando é omitido o kubernetes assume que é a mesma porta do serviço
       protocol: TCP
 
 # port forward
-# kubectl port-forward svc/phpserver-service 8005:8005
+# kubectl port-forward svc/phpserver-service <local_port>:<service_port>
+# kubectl port-forward svc/phpserver-service 8003:8005
+# kubernetes funciona com redirecionamento triplo de portas
+#     Ao acessar a porta local (8003)
+#         é redirecionado para a porta do serviço (8005)
+#         que redireciona para a porta do container (80)
