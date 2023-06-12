@@ -24,5 +24,8 @@ spec:
 # kubectl apply -f k8s/replicaset.yml
 # Toda vez que mudar o arquivo de configuração deve rodar o comando novamente
 
+# Para apagar replicaset
+# kubectl delete replicaset <replicaset_name>
+
 # Get all replicasets
 # kubectl get replicasets
