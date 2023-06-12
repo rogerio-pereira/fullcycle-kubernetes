@@ -4,7 +4,7 @@ class Index
 {
     public function hello()
     {
-        return "<h1>Hello Fullcycle</h1>";
+        return "<h1>Hello Fullcycle!</h1>";
     }
 }
 
