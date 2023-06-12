@@ -26,6 +26,7 @@ spec:
 
 # Para apagar replicaset
 # kubectl delete replicaset <replicaset_name>
+# quando vc apaga um replicaset os pod associados a ele sao apagados automaticametne
 
 # Get all replicasets
 # kubectl get replicasets
