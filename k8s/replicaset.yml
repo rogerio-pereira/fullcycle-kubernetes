@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: "phpserver"
+  labels:
+    app: "phpserver"
+spec:
+  #usado para filtrar os pods com o mesmo label
+  selector:
+    matchLabels:
+      app: "phpserver"
+  replicas: 4
+  template:
+    metadata:
+      name: "phpserver"
+      labels:
+        app: "phpserver"
+    spec:
+      containers:
+      - name: "phpserver"
+        image: "farofapereira/kubernetes-hello-php"
+
+# para aplicar configurações
+# kubectl apply -f k8s/replicaset.yml
+# Toda vez que mudar o arquivo de configuração deve rodar o comando novamente
+
+# Get all replicasets
+# kubectl get replicasets

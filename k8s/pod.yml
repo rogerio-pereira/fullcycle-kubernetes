@@ -18,6 +18,9 @@ spec:
 # Get all pods
 # kubectl get pods
 
+# Delete pod
+# kubectl delete pod <pod_name>
+
 # Port forward to pod
 # kubectl port-forward pod/<pod_name> <port_local>:<port_container>
 # eg.
