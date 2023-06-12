@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "phpserver"
+  labels:
+    app: "phpserver"
+spec:
+  #usado para filtrar os pods com o mesmo label
+  selector:
+    matchLabels:
+      app: "phpserver"
+  replicas: 4
+  template:
+    metadata:
+      name: "phpserver"
+      labels:
+        app: "phpserver"
+    spec:
+      containers:
+      - name: "phpserver"
+        image: "farofapereira/kubernetes-hello-php:v2"
+
+# para aplicar configurações
+# kubectl apply -f k8s/deployment.yml
+# Ira gerar arquivos com o nome <deployment_name>-<replicaset_name>-<pod_name>
+
+# Get all deployments
+# kubectl get deployents
