@@ -4,7 +4,11 @@ class Index
 {
     public function hello()
     {
-        return "<h1>Hello Fullcycle!</h1>";
+        /*
+         * Using OS environment variables not variables defined in a .env file
+         *      This variables are defines in deployment.yml
+         */
+        return "<h1>Hello! I'm {$_ENV['NAME']}, i'm {$_ENV['AGE']} years old.</h1>";
     }
 }
 

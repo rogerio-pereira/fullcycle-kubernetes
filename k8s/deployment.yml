@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: "phpserver"
-  replicas: 4
+  replicas: 1
   template:
     metadata:
       name: "phpserver"
@@ -18,7 +18,13 @@ spec:
     spec:
       containers:
       - name: "phpserver"
-        image: "farofapereira/kubernetes-hello-php:v3"
+        image: "farofapereira/kubernetes-hello-php:v4"
+        env:
+          - name: NAME
+            value: "Rogerio"
+          - name: AGE
+            value: "32"
+
 
 # para aplicar configurações
 # kubectl apply -f k8s/deployment.yml
