@@ -5,13 +5,12 @@ metadata:
 spec:
   selector:
     app: "phpserver"
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: phpserver-service #optional
       port: 8005 #Porta do Serviço rodando no kubernetes
       targetPort: 80 #porta do container, quando é omitido o kubernetes assume que é a mesma porta do serviço
       protocol: TCP
-      nodePort: 30001 #Se nao passar nada, será gerado uma porta automatica
 
 # port forward
 # kubectl port-forward svc/phpserver-service <local_port>:<service_port>
@@ -26,3 +25,12 @@ spec:
 #   Libera essa porta em todos os nodes
 #   Permite o acesso ao serviço usando <ip_da_maquina>:<node_port> 
 #   Somente acessivel dentro da rede do cluster
+
+# LoadBalancer
+#   Gera um ip publico (externo) para acessar a aplicação
+#   Muito utilizado quando utiliza um cluster gerenciado ex: EKS
+#   Se rodar localmente, o ip externo nao será gerado
+#   Quando usa LoadBalancer ele automaticamente gera uma NodePort
+#   Só use quando quiser expor a aplicação para a rede externa 
+#       microservicos é melhor usar LoadBalancer para os serviços publicos (api, frontend, etc) e ClusterIp para os 
+#       serviços internos (mysql, microservices, etc)
