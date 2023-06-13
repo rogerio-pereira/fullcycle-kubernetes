@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: phpserver-env
+data:
+  NAME: ""
+  AGE: ""
+
+# Se mudar o configmap não necessariamente vai mudar o deployment automaticamente
+#     É necessario atualizar o deployment para atualizar as variaveis
+#     kubectl apply -f k8s/configmap-env.yml 
+#     kubectl apply -f k8s/deployment.yml 

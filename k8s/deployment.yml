@@ -19,12 +19,22 @@ spec:
       containers:
       - name: "phpserver"
         image: "farofapereira/kubernetes-hello-php:v4"
-        env:
-          - name: NAME
-            value: "Rogerio"
-          - name: AGE
-            value: "32"
-
+        ##Defining env variable one-by-one
+        # env:
+        #   - name: NAME
+        #     valueFrom:
+        #       configMapKeyRef:
+        #         name: phpserver-env
+        #         key: NAME
+        #   - name: AGE
+        #     valueFrom:
+        #       configMapKeyRef:
+        #         name: phpserver-env
+        #         key: AGE
+        ##Define env variables by file
+        envFrom:
+          - configMapRef:
+              name: phpserver-env
 
 # para aplicar configurações
 # kubectl apply -f k8s/deployment.yml
