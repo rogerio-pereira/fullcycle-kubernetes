@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: "phpserver"
-        image: "farofapereira/kubernetes-hello-php:v4"
+        image: "farofapereira/kubernetes-hello-php:v5"
         ##Defining env variable one-by-one
         # env:
         #   - name: NAME
@@ -35,6 +35,18 @@ spec:
         envFrom:
           - configMapRef:
               name: phpserver-env
+        volumeMounts:
+          - mountPath: "/var/www/html/familyMembers"  #defined in Dockerfile
+            name: config
+      ##Volume will inject files into containers
+      volumes:
+        - name: config
+          configMap:
+            name: configmap-family
+            items:
+            - key: members
+              path: "family.txt"
+
 
 # para aplicar configurações
 # kubectl apply -f k8s/deployment.yml
