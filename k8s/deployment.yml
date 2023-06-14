@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: "phpserver"
-        image: "farofapereira/kubernetes-hello-php:v5"
+        image: "farofapereira/kubernetes-hello-php:v6"
         ##Defining env variable one-by-one
         # env:
         #   - name: NAME
@@ -35,6 +35,8 @@ spec:
         envFrom:
           - configMapRef:
               name: phpserver-env
+          - secretRef: #secrets are environment variables, so aren't encrypted
+              name: phpserver-secret
         volumeMounts:
           - mountPath: "/var/www/html/familyMembers"  #defined in Dockerfile
             name: config

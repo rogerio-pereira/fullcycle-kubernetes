@@ -6,6 +6,9 @@ class Index
     {
         $fileData = $this->getFileData("familyMembers/family.txt");
 
+        $user = $this->getSecret('USER');
+        $password = $this->getSecret('PASSWORD');
+
         /*
          * Using OS environment variables not variables defined in a .env file
          *      This variables are defines in deployment.yml
@@ -16,7 +19,14 @@ class Index
                 
                 <p>
                     My family: {$fileData}
-                </p>";
+                </p>
+                
+                <h2>Secrets</h2>
+                <p>
+                    User: {$user} <br/>
+                    Password: {$password}
+                </p>
+                ";
     }
 
     private function getFileData($file)
@@ -26,6 +36,11 @@ class Index
         } catch(Exception $e) {
             exit("Error: File {$file} not found!");
         }
+    }
+
+    private function getSecret($secret)
+    {
+        return $_ENV[$secret] ?? null;
     }
 }
 
