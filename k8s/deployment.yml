@@ -38,6 +38,7 @@ spec:
         volumeMounts:
           - mountPath: "/var/www/html/familyMembers"  #defined in Dockerfile
             name: config
+            # readonly: true #optional
       ##Volume will inject files into containers
       volumes:
         - name: config
